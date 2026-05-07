@@ -1,53 +1,53 @@
-' ANSI KODLAMA İLE KAYDET
+
 Set shell = CreateObject("WScript.Shell")
 Set sapi = CreateObject("sapi.spvoice")
 
 puan = 0
 
-' GİRİŞ SEKANSI
-sapi.Speak "Welcome to the hacker simulator."
-MsgBox "Hacker Simülatörüne Hoş Geldin! Amacın 100 puan toplayıp sistemi ele geçirmek.", 0+64, "Yükleniyor..."
 
-' BÖLÜM 1: İSİM GİRİŞİ
-kullanici = InputBox("Hacker kod adını belirle:", "Sistem Girişi")
+sapi.Speak "Welcome to the hacker simulator."
+MsgBox "Hacker SimÃ¼latÃ¶rÃ¼ne HoÅŸ Geldin! AmacÄ±n 100 puan toplayÄ±p sistemi ele geÃ§irmek.", 0+64, "YÃ¼kleniyor..."
+
+
+kullanici = InputBox("Hacker kod adÄ±nÄ± belirle:", "Sistem GiriÅŸi")
 If kullanici = "" Then kullanici = "Anonim"
 
-MsgBox "Pekala " & kullanici & ", ilk görevin başlıyor!", 0+64, "Görev 1"
+MsgBox "Pekala " & kullanici & ", ilk gÃ¶revin baÅŸlÄ±yor!", 0+64, "GÃ¶rev 1"
 
-' BÖLÜM 2: BİLGİ YARIŞMASI
-cevap1 = MsgBox("Sisteme girmek için 'Port 80' kapısını kırman gerekiyor. Baltayla mı vuracaksın yoksa kod mu yazacaksın?" & vbCrLf & "(Evet = Kod Yaz / Hayır = Balta Kullan)", 4+32, "Kritik Seçim")
 
-If cevap1 = 6 Then ' Evet (Kod Yaz)
+cevap1 = MsgBox("Sisteme girmek iÃ§in 'Port 80' kapÄ±sÄ±nÄ± kÄ±rman gerekiyor. Baltayla mÄ± vuracaksÄ±n yoksa kod mu yazacaksÄ±n?" & vbCrLf & "(Evet = Kod Yaz / HayÄ±r = Balta Kullan)", 4+32, "Kritik SeÃ§im")
+
+If cevap1 = 6 Then 
     puan = puan + 50
-    MsgBox "Zekice! Port 80 başarıyla geçildi. +50 Puan!", 0+64, "Başarılı"
-Else ' Hayır (Balta)
+    MsgBox "Zekice! Port 80 baÅŸarÄ±yla geÃ§ildi. +50 Puan!", 0+64, "BaÅŸarÄ±lÄ±"
+Else 
     puan = puan - 20
-    MsgBox "Baltayla modemi kırdın... İnternetin kesildi. -20 Puan.", 0+16, "Hata"
+    MsgBox "Baltayla modemi kÄ±rdÄ±n... Ä°nternetin kesildi. -20 Puan.", 0+16, "Hata"
 End If
 
-' BÖLÜM 3: HIZ TESTİ
+
 sapi.Speak "Wait, someone is coming!"
-cevap2 = InputBox("Güvenlik kamerası seni gördü! Saklanmak için bir renk gir (Mavi/Kırmızı):", "ACİL DURUM")
+cevap2 = InputBox("GÃ¼venlik kamerasÄ± seni gÃ¶rdÃ¼! Saklanmak iÃ§in bir renk gir (Mavi/KÄ±rmÄ±zÄ±):", "ACÄ°L DURUM")
 
 If LCase(cevap2) = "mavi" Then
     puan = puan + 50
-    MsgBox "Mavi ışıkların arasına gizlendin, seni fark etmediler!", 0+64, "Güvenli"
+    MsgBox "Mavi Ä±ÅŸÄ±klarÄ±n arasÄ±na gizlendin, seni fark etmediler!", 0+64, "GÃ¼venli"
 Else
     puan = puan + 10
-    MsgBox "Kırmızı çok dikkat çekti ama hızlıca kaçtın.", 0+48, "Dikkat"
+    MsgBox "KÄ±rmÄ±zÄ± Ã§ok dikkat Ã§ekti ama hÄ±zlÄ±ca kaÃ§tÄ±n.", 0+48, "Dikkat"
 End If
 
-' BÖLÜM 4: FİNAL VE ŞAKA
-MsgBox "Hesaplanıyor... Toplam Puanın: " & puan, 0+64, "Sonuç"
+
+MsgBox "HesaplanÄ±yor... Toplam PuanÄ±n: " & puan, 0+64, "SonuÃ§"
 
 If puan >= 100 Then
     sapi.Speak "Access granted. You are a master hacker."
-    MsgBox "Tebrikler " & kullanici & "! Artık bir mastersın. Şimdi ödülünü al!", 0+64, "ZAFER"
-    ' Ödül olarak bir video açalım
+    MsgBox "Tebrikler " & kullanici & "! ArtÄ±k bir mastersÄ±n. Åimdi Ã¶dÃ¼lÃ¼nÃ¼ al!", 0+64, "ZAFER"
+    ' Ã–dÃ¼l olarak bir video aÃ§alÄ±m
     shell.Run "https://youtu.be/z4pOvrzg6bc"
 Else
     sapi.Speak "Access denied. Initiating self destruct."
-    MsgBox "Puanın yetmedi! Bilgisayar 5 saniye içinde ĞĞĞĞĞĞlanacak!", 0+48, "EYVAH"
+    MsgBox "PuanÄ±n yetmedi! Bilgisayar 5 saniye iÃ§inde ÄÄÄÄÄÄlanacak!", 0+48, "EYVAH"
     wscript.sleep 2000
-    MsgBox "ŞAKA YAPTIM! Puanın: " & puan & ". Ama yine de ĞĞĞĞlandın!", 0+64, "Oyun Bitti"
+    MsgBox "ÅAKA YAPTIM! PuanÄ±n: " & puan & ". Ama yine de ÄÄÄÄlandÄ±n!", 0+64, "Oyun Bitti"
 End If
